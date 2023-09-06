@@ -1,4 +1,5 @@
 import { useFetch } from "../../servicios/useFetch";
+import CompararGeneros from "../Generos";
 
 const Home = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -6,12 +7,7 @@ const Home = () => {
   const { data } = useFetch(
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=1&sort_by=popularity.desc"
   );
-
-  /* const { data } = useFetch("https://probando-errores.com"); */
-
-  const resultado = data.results;
-  console.log(resultado);
-
+  //console.log(data);
   return (
     <div>
       <h1>peliculas</h1>
@@ -26,7 +22,7 @@ const Home = () => {
                 height={400}
               />
               <h1>{movie.title}</h1>
-              <p>Género: {movie.genre_ids}</p>
+              <p>Género: {<CompararGeneros />}</p>
               <p>Calificación: {movie.vote_average}</p>
             </div>
           ))
