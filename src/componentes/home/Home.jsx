@@ -26,6 +26,8 @@ const Home = () => {
                 height={400}
               />
               <h1>{movie.title}</h1>
+              <p>Género: {movie.genre_ids}</p>
+              <p>Calificación: {movie.vote_average}</p>
             </div>
           ))
         ) : (
