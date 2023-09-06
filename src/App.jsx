@@ -1,37 +1,20 @@
-import { useFetch } from "./servicios/useFetch";
+import { Route, Routes } from "react-router-dom";
+
+import Estrenos from "./componentes/estrenos/Estrenos";
+import TopTen from "./componentes/topTen/TopTen";
+import Home from "./componentes/home/Home";
+import LayoutPublic from "./layouts/LayoutPublic";
 
 function App() {
-  const imageUrl = "https://image.tmdb.org/t/p/original";
-
-  const { data } = useFetch(
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=1&sort_by=popularity.desc"
-  );
-
-  /* const { data } = useFetch("https://probando-errores.com"); */
-
-  const resultado = data.results;
-  console.log(resultado);
-
   return (
     <div>
-      <h1>peliculas</h1>
-      <div>
-        {data.results ? (
-          data.results.map((movie) => (
-            <div key={movie.id}>
-              <img
-                src={`${imageUrl + movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={400}
-              />
-              <h1>{movie.title}</h1>
-            </div>
-          ))
-        ) : (
-          <p>No se encuentran las películas</p>
-        )}
-      </div>
+      <Routes>
+        <Route path="/" element={<LayoutPublic />}>
+          <Route element={<Home />} path="/" />
+          <Route element={<Estrenos />} path="/estrenos" />
+          <Route element={<TopTen />} path="/top" />
+        </Route>
+      </Routes>
     </div>
   );
 }
