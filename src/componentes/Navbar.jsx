@@ -6,7 +6,7 @@ const Navbar = () => {
       <div>
         <Link to="/">HOME</Link>
         <Link to="/estrenos">ESTRENOS</Link>
-        <Link to="/top">TOP 10</Link>
+        <Link to="/top">MEJOR CALIFICADAS</Link>
       </div>
     </div>
   );
