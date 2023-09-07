@@ -15,7 +15,7 @@ export const useGenres = () => {
   const fetchData = async () => {
     try {
       const res = await fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?language=en",
+        "https://api.themoviedb.org/3/genre/movie/list?language=es",
         options
       );
       const data = await res.json();
