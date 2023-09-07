@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../componentes/Navbar.jsx";
+import Navbar from "../componentes/header/Navbar.jsx";
+import Banner from "../componentes/banner/Banner.jsx";
 
 const LayoutPublic = () => {
   return (
     <div>
       <Navbar />
+      <Banner />
       <Outlet />
 
       <footer>Probando Layout</footer>
