@@ -9,14 +9,8 @@ const Home = () => {
   );
 
   const generos = useGenres();
-  const generosMap = generos.data.genres;
 
-  const generosIdNombre = {};
-  for (const key in generosMap) {
-    const genero = generosMap[key];
-    generosIdNombre[genero.id] = genero.name;
-  }
-
+  console.log(generos);
   return (
     <div>
       <h1>peliculas</h1>
@@ -31,7 +25,7 @@ const Home = () => {
                 height={400}
               />
               <h1>{movie.title}</h1>
-              <p>Género: {generosIdNombre[movie.genre_ids[0]]}</p>
+              <p>Género: {generos[movie.genre_ids[0]]}</p>
               <p>Calificación: {movie.vote_average}</p>
             </div>
           ))
