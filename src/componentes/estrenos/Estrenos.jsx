@@ -1,4 +1,5 @@
 import { useFetch } from "../../servicios/useFetch";
+import { useGenres } from "../../servicios/useGeneros";
 
 const Estrenos = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -7,7 +8,7 @@ const Estrenos = () => {
     "https://api.themoviedb.org/3/movie/upcoming?language=es-ES&page=1"
   );
 
-  /* const { data } = useFetch("https://probando-errores.com"); */
+  const generos = useGenres();
 
   const resultado = data.results;
   console.log(resultado);
@@ -26,6 +27,8 @@ const Estrenos = () => {
                 height={400}
               />
               <h1>{movie.title}</h1>
+              <p>Género: {generos[movie.genre_ids[0]]}</p>
+              <p>Calificación: {movie.vote_average}</p>
             </div>
           ))
         ) : (

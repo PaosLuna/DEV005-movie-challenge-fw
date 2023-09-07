@@ -1,4 +1,5 @@
 import { useFetch } from "../../servicios/useFetch";
+import { useGenres } from "../../servicios/useGeneros";
 
 const TopTen = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -7,10 +8,7 @@ const TopTen = () => {
     "https://api.themoviedb.org/3/movie/top_rated?language=es-ES&page=1"
   );
 
-  /* const { data } = useFetch("https://probando-errores.com"); */
-
-  const resultado = data.results;
-  console.log(resultado);
+  const generos = useGenres();
 
   return (
     <div>
@@ -26,6 +24,8 @@ const TopTen = () => {
                 height={400}
               />
               <h1>{movie.title}</h1>
+              <p>Género: {generos[movie.genre_ids[0]]}</p>
+              <p>Calificación: {movie.vote_average}</p>
             </div>
           ))
         ) : (

@@ -21,7 +21,7 @@ export const useGenres = () => {
       const data = await res.json();
       setGenres(data);
     } catch (error) {
-      error;
+      console.error(error);
       setGenres([]);
     }
   };
@@ -30,5 +30,13 @@ export const useGenres = () => {
     fetchData();
   }, []);
 
-  return { data: genres };
+  const generosMap = genres.genres;
+
+  const generosIdNombre = {};
+  for (const key in generosMap) {
+    const genero = generosMap[key];
+    generosIdNombre[genero.id] = genero.name;
+  }
+
+  return generosIdNombre;
 };
