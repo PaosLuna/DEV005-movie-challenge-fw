@@ -13,7 +13,7 @@ const Banner = () => {
     principales = data.results.slice(0, 3);
   }
 
-  console.log(principales);
+  // console.log(principales);
 
   return (
     <div>
