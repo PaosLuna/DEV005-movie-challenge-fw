@@ -16,7 +16,6 @@ export const useFetch = (url) => {
     try {
       const res = await fetch(url, options);
       const data = await res.json();
-
       setMovies(data);
     } catch (error) {
       error;

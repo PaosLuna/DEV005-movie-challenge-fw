@@ -5,19 +5,20 @@ import { useGenres } from "../../servicios/useGeneros";
 
 const Home = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
+
+  const [orderAbc, setOrderAbc] = useState(null);
+  const [select, setSelect] = useState(null);
+
   const { data } = useFetch(
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=1&sort_by=popularity.desc"
   );
+
   const generos = useGenres();
   let dataMovies = [];
 
   if (data.results) {
     dataMovies = data.results.slice();
   }
-
-  //const orderAlphabetical = orderAZ(dataMovies, (title) => title.title, "desc");
-
-  const [orderAbc, setOrderAbc] = useState(null);
 
   const handleOrderChange = (e) => {
     const selectedOrder = e.target.value;
@@ -31,9 +32,11 @@ const Home = () => {
     } else {
       setOrderAbc(null);
     }
+
+    setSelect(selectedOrder);
   };
 
-  //console.log(orderAlphabetical, 21);
+  const orderMovies = orderAbc || dataMovies;
 
   return (
     <div>
@@ -48,7 +51,7 @@ const Home = () => {
 
       <div>
         {data.results ? (
-          data.results.map((movie) => (
+          orderMovies.map((movie) => (
             <div key={movie.id}>
               <img
                 src={`${imageUrl + movie.poster_path}`}
