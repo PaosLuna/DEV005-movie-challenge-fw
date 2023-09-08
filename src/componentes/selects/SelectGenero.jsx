@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGenres } from "../../servicios/useGeneros";
 import useFiltroGeneros from "../../servicios/useFiltroGeneros";
 
-const SelectGenero = () => {
+const SelectGenero = ({ handleFiltroGeneros }) => {
   const generos = useGenres();
   const [selectGenero, setSelectGenero] = useState("");
   const [generoFiltro, setGeneroFiltro] = useState(null);
@@ -91,6 +91,7 @@ const SelectGenero = () => {
       console.log("genero");
     }
     setSelectGenero(selectedGenero);
+    handleFiltroGeneros();
     //console.log(selectGenero);
   };
 
