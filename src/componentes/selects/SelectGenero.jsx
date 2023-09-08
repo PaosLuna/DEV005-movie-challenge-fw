@@ -1,8 +1,20 @@
+import { useGenres } from "../../servicios/useGeneros";
+
 const SelectGenero = () => {
-  console.log("probando");
+  const generos = useGenres();
+  console.log(generos.name);
   return (
     <div>
-      <h1>filtrando por genero</h1>;
+      <select name="filtroGeneros">
+        <option disabled selected>
+          GENERO
+        </option>
+        {Object.keys(generos).map((generoId) => (
+          <option key={generoId} value={generoId}>
+            {generos[generoId]}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
