@@ -21,7 +21,7 @@ const Home = () => {
   if (data.results) {
     dataMovies = data.results.slice();
   }
-
+  console.log(generos, 24);
   const handleOrderChange = (e) => {
     const selectedOrder = e.target.value;
 
