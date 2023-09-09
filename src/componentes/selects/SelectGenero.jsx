@@ -3,6 +3,7 @@ import { useGenres } from "../../servicios/useGeneros";
 import useFiltroGeneros from "../../servicios/useFiltroGeneros";
 
 const SelectGenero = ({ handleFiltroGeneros }) => {
+  const imageUrl = "https://image.tmdb.org/t/p/original";
   const generos = useGenres();
   const [selectGenero, setSelectGenero] = useState("");
   const [movieFiltro, setMovieFiltro] = useState("");
@@ -97,7 +98,15 @@ const SelectGenero = ({ handleFiltroGeneros }) => {
       {movieFiltro !== "" ? (
         movieFiltro.results.map((movie) => (
           <div key={movie.id}>
+            <img
+              src={`${imageUrl + movie.poster_path}`}
+              alt={movie.title}
+              width={300}
+              height={400}
+            />
             <h1>{movie.title}</h1>
+
+            <p>Calificación: {movie.vote_average}⭐</p>
           </div>
         ))
       ) : (

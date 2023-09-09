@@ -72,9 +72,7 @@ const Home = () => {
             </div>
           ))
         ) : (
-          <div>
-            <h1>aqui va el filtro de generos</h1>
-          </div>
+          <div></div>
         )}
       </div>
     </div>
