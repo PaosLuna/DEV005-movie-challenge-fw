@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   const orderMovies = orderAbc || dataMovies;
-  console.log(filtroGeneros);
+  //console.log(filtroGeneros);
 
   const handleFiltroGeneros = () => {
     setFiltroGeneros(true);

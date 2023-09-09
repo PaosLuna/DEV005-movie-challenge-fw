@@ -5,119 +5,9 @@ import useFiltroGeneros from "../../servicios/useFiltroGeneros";
 const SelectGenero = ({ handleFiltroGeneros }) => {
   const generos = useGenres();
   const [selectGenero, setSelectGenero] = useState("");
-  const [generoFiltro, setGeneroFiltro] = useState(null);
+  const [movieFiltro, setMovieFiltro] = useState("");
 
-  const handleGeneroChange = (e) => {
-    const selectedGenero = e.target.value;
-
-    if (selectedGenero == "Aventura") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "asc"));
-      console.log("Aventura");
-      //console.log("genero");
-    } else if (selectedGenero === "Fantasía") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Fantasia");
-      //console.log("genero");
-    } else if (selectedGenero === "Animación") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Animación");
-      //console.log("genero");
-    } else if (selectedGenero === "Drama") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Drama");
-      //console.log("genero");
-    } else if (selectedGenero === "Terror") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Terror");
-      //console.log("genero");
-    } else if (selectedGenero === "Acción") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Acción");
-      //console.log("genero");
-    } else if (selectedGenero === "Comedia") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Comedia");
-      //console.log("genero");
-    } else if (selectedGenero === "Historia") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Historia");
-      //console.log("genero");
-    } else if (selectedGenero === "Western") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Western");
-      //console.log("genero");
-    } else if (selectedGenero === "Suspense") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Suspense");
-      //console.log("genero");
-    } else if (selectedGenero === "Crimen") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Crimen");
-      //console.log("genero");
-    } else if (selectedGenero === "Documental") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Documental");
-      //console.log("genero");
-    } else if (selectedGenero === "Ciencia ficción") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Ciencia ficción");
-      //console.log("genero");
-    } else if (selectedGenero === "Misterio") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Misterio");
-      //console.log("genero");
-    } else if (selectedGenero === "Música") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Música");
-      //console.log("genero");
-    } else if (selectedGenero === "Romance") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Romance");
-      //console.log("genero");
-    } else if (selectedGenero === "Familia") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Familia");
-      //console.log("genero");
-    } else if (selectedGenero === "Bélica") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Bélica");
-      //console.log("genero");
-    } else if (selectedGenero === "Película de TV") {
-      //setGeneroFiltro(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("Película de TV");
-      //console.log("genero");
-    } else {
-      //setGeneroFiltro(null);
-      console.log("genero");
-    }
-    setSelectGenero(selectedGenero);
-    handleFiltroGeneros();
-    //console.log(selectGenero);
-  };
-
-  return (
-    <div>
-      <select
-        name="filtroGeneros"
-        onChange={handleGeneroChange}
-        value={selectGenero}
-      >
-        <option disabled selected>
-          GENERO
-        </option>
-        {Object.keys(generos).map((genero) => (
-          <option key={genero.id} value={genero.id}>
-            {generos[genero]}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
-
-export default SelectGenero;
-
-/* const { data: Accion } = useFiltroGeneros("28");
+  const { data: Accion } = useFiltroGeneros("28");
   const { data: Aventura } = useFiltroGeneros("12");
   const { data: Animacion } = useFiltroGeneros("16");
   const { data: Comedia } = useFiltroGeneros("35");
@@ -135,4 +25,86 @@ export default SelectGenero;
   const { data: Suspenso } = useFiltroGeneros("53");
   const { data: Tv } = useFiltroGeneros("10770");
   const { data: Western } = useFiltroGeneros("37");
-  const { data: Bélico } = useFiltroGeneros("10752"); */
+  const { data: Belico } = useFiltroGeneros("10752");
+
+  const handleGeneroChange = (e) => {
+    const selectedGenero = e.target.value;
+
+    if (selectedGenero == "Aventura") {
+      console.log(Aventura);
+      setMovieFiltro(Aventura);
+    } else if (selectedGenero === "Fantasía") {
+      setMovieFiltro(Fantasia);
+    } else if (selectedGenero === "Animación") {
+      setMovieFiltro(Animacion);
+    } else if (selectedGenero === "Drama") {
+      setMovieFiltro(Drama);
+    } else if (selectedGenero === "Terror") {
+      setMovieFiltro(Horror);
+    } else if (selectedGenero === "Acción") {
+      setMovieFiltro(Accion);
+    } else if (selectedGenero === "Comedia") {
+      setMovieFiltro(Comedia);
+    } else if (selectedGenero === "Historia") {
+      setMovieFiltro(Historia);
+    } else if (selectedGenero === "Western") {
+      setMovieFiltro(Western);
+    } else if (selectedGenero === "Suspense") {
+      setMovieFiltro(Suspenso);
+    } else if (selectedGenero === "Crimen") {
+      setMovieFiltro(Crimen);
+    } else if (selectedGenero === "Documental") {
+      setMovieFiltro(Documental);
+    } else if (selectedGenero === "Ciencia ficción") {
+      setMovieFiltro(CienciaFiccion);
+    } else if (selectedGenero === "Misterio") {
+      setMovieFiltro(Misterio);
+    } else if (selectedGenero === "Música") {
+      setMovieFiltro(Musica);
+    } else if (selectedGenero === "Romance") {
+      setMovieFiltro(Romance);
+    } else if (selectedGenero === "Familia") {
+      setMovieFiltro(Familiar);
+    } else if (selectedGenero === "Bélica") {
+      setMovieFiltro(Belico);
+    } else if (selectedGenero === "Película de TV") {
+      setMovieFiltro(Tv);
+    } else {
+      console.log("genero");
+    }
+    handleFiltroGeneros();
+    setSelectGenero(selectedGenero);
+  };
+
+  console.log(movieFiltro.results, 79);
+
+  return (
+    <div>
+      <select
+        name="filtroGeneros"
+        onChange={handleGeneroChange}
+        value={selectGenero}
+      >
+        <option disabled selected>
+          GENERO
+        </option>
+        {Object.keys(generos).map((genero) => (
+          <option key={genero.id} value={genero.id}>
+            {generos[genero]}
+          </option>
+        ))}
+      </select>
+      {movieFiltro !== "" ? (
+        movieFiltro.results.map((movie) => (
+          <div key={movie.id}>
+            <h1>{movie.title}</h1>
+          </div>
+        ))
+      ) : (
+        <p>no has selecioonado el genero</p>
+      )}
+    </div>
+  );
+};
+
+export default SelectGenero;
