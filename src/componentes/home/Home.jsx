@@ -21,7 +21,7 @@ const Home = () => {
   if (data.results) {
     dataMovies = data.results.slice();
   }
-
+  console.log(generos, 24);
   const handleOrderChange = (e) => {
     const selectedOrder = e.target.value;
 
@@ -38,6 +38,11 @@ const Home = () => {
   };
 
   const orderMovies = orderAbc || dataMovies;
+  //console.log(filtroGeneros);
+
+  const handleFiltroGeneros = () => {
+    setFiltroGeneros(true);
+  };
 
   return (
     <div>
@@ -49,9 +54,7 @@ const Home = () => {
         <option value={"ASCENDENTE"}>ASCENDENTE</option>
         <option value={"DESCENDENTE"}>DESCENDENTE</option>
       </select>
-      <button onClick={() => setFiltroGeneros(!filtroGeneros)}>
-        probando genero
-      </button>
+      <SelectGenero handleFiltroGeneros={handleFiltroGeneros} />
 
       <div>
         {data.results && !filtroGeneros ? (
@@ -69,7 +72,7 @@ const Home = () => {
             </div>
           ))
         ) : (
-          <SelectGenero />
+          <div></div>
         )}
       </div>
     </div>
@@ -77,6 +80,12 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <button onClick={() => setFiltroGeneros(!filtroGeneros)}>
+        probando genero
+      </button> */
+}
 
 {
   /* <select>
