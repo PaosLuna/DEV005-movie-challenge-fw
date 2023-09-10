@@ -73,8 +73,9 @@ const SelectGenero = ({ handleFiltroGeneros }) => {
     } else {
       console.log("genero");
     }
+
     handleFiltroGeneros();
-    setSelectGenero(selectedGenero);
+    setSelectGenero(selectedGenero, "selectGenero");
   };
 
   console.log(movieFiltro.results, 79);
