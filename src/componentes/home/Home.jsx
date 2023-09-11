@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { orderAZ } from "../../servicios/orderAZ";
 import { useFetch } from "../../servicios/useFetch";
 import { useGenres } from "../../servicios/useGeneros";
 import SelectGenero from "../selects/SelectGenero";
+import { MostarPeliculasContext } from "../context/Context";
 
 const Home = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
 
   const [orderAbc, setOrderAbc] = useState(null);
-  const [select, setSelect] = useState(null);
+  /*   const [select, setSelect] = useState(null); */
   const [filtroGeneros, setFiltroGeneros] = useState(false);
+  const context = useContext(MostarPeliculasContext);
 
   const { data } = useFetch(
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=1&sort_by=popularity.desc"
@@ -34,7 +36,7 @@ const Home = () => {
     } else {
       setOrderAbc(null);
     }
-    setSelect(selectedOrder);
+    context.setSelect(selectedOrder);
   };
 
   const orderMovies = orderAbc || dataMovies;
