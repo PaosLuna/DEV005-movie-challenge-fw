@@ -46,7 +46,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>peliculas</h1>
+      <h1 className="bg-pink-500">peliculas</h1>
       <select onChange={handleOrderChange}>
         <option disabled selected>
           A-Z
