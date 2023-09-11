@@ -8,6 +8,7 @@ const Estrenos = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
   const [estrenosGenero, setEstrenosGenero] = useState(false);
   const [orderAbc, setOrderAbc] = useState(null);
+  const [select, setSelect] = useState(null);
 
   const { data } = useFetch(
     "https://api.themoviedb.org/3/movie/upcoming?language=es-ES&page=1"
