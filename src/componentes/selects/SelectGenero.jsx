@@ -86,6 +86,7 @@ const SelectGenero = ({ handleFiltroGeneros }) => {
         name="filtroGeneros"
         onChange={handleGeneroChange}
         value={selectGenero}
+        className="bg-purple-500 text-white text-xl text-center rounded-md  w-40 h-10 cursor-pointer"
       >
         <option disabled selected>
           GENERO
@@ -96,23 +97,23 @@ const SelectGenero = ({ handleFiltroGeneros }) => {
           </option>
         ))}
       </select>
-      {movieFiltro !== "" ? (
-        movieFiltro.results.map((movie) => (
-          <div key={movie.id}>
-            <img
-              src={`${imageUrl + movie.poster_path}`}
-              alt={movie.title}
-              width={300}
-              height={400}
-            />
-            <h1>{movie.title}</h1>
 
-            <p>Calificación: {movie.vote_average}⭐</p>
-          </div>
-        ))
-      ) : (
-        <p>no has selecioonado el genero</p>
-      )}
+      <div className="flex flex-wrap justify-start">
+        {movieFiltro &&
+          movieFiltro.results.map((movie) => (
+            <div key={movie.id} className=" w-1/4 pb-4">
+              <img
+                src={`${imageUrl + movie.poster_path}`}
+                alt={movie.title}
+                width={300}
+                height={400}
+              />
+              <h1>{movie.title}</h1>
+              <p>Calificación: {movie.vote_average}⭐</p>
+            </div>
+          ))}
+        {/* {!movieFiltro && <p>no has seleccionado el género</p>} */}
+      </div>
     </div>
   );
 };
