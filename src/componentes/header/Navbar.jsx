@@ -10,7 +10,7 @@ const Navbar = () => {
           alt="Cinema Zone"
           width={80}
           height={80}
-          className="flex justify-self-start ml-2"
+          className="flex justify-self-start"
         />
         <div className="flex justify-around items-center w-full">
           <Link to="/" className="hover:text-yellow-500">

@@ -34,12 +34,15 @@ const Estrenos = () => {
     } else {
       setOrderAbc(null);
     }
+    console.log("hola");
     setSelect(selectedOrder);
   };
 
+  const orderMovies = orderAbc || dataMovies;
+
   return (
     <div>
-      <div className="flex gap-5 ml-2">
+      <div className="flex gap-5 ml-2 pb-4 w-100 h-14">
         <select
           onChange={handleOrderChange}
           className="bg-purple-500 text-white text-xl text-center rounded-md w-40 h-10 cursor-pointer"
@@ -50,12 +53,11 @@ const Estrenos = () => {
           <option value={"ASCENDENTE"}>ASCENDENTE</option>
           <option value={"DESCENDENTE"}>DESCENDENTE</option>
         </select>
-        <SelectGenero estrenosGenero={true} />
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {data.results && !estrenosGenero ? (
-          data.results.map((movie) => (
+          orderMovies.map((movie) => (
             <div key={movie.id} className="px-2 w-1/4 pb-4">
               <img
                 src={`${imageUrl + movie.poster_path}`}

@@ -4,7 +4,6 @@ import { useFetch } from "../../servicios/useFetch";
 import { useGenres } from "../../servicios/useGeneros";
 import SelectGenero from "../selects/SelectGenero";
 import { MostarPeliculasContext } from "../context/Context";
-import Banner from "../slider/Slider";
 
 const Home = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -52,7 +51,6 @@ const Home = () => {
 
   return (
     <div>
-      <Banner />
       <div className="flex gap-5 ml-2 pb-4 w-100 h-14">
         <select
           onChange={handleOrderChange}
@@ -64,10 +62,15 @@ const Home = () => {
           <option value={"ASCENDENTE"}>ASCENDENTE</option>
           <option value={"DESCENDENTE"}>DESCENDENTE</option>
         </select>
-        <SelectGenero handleFiltroGeneros={handleFiltroGeneros} />
+        <SelectGenero
+          handleFiltroGeneros={handleFiltroGeneros}
+          filteredMovies={filteredMovies}
+          setFilteredMovies={setFilteredMovies}
+          /*  handleGeneroChange={handleGeneroChange} */
+        />
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {data.results && !filtroGeneros ? (
           orderMovies.map((movie) => (
             <div key={movie.id} className="px-2 w-1/4 pb-4">

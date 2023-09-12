@@ -12,25 +12,23 @@ const TopTen = () => {
 
   return (
     <div>
-      <h1>peliculas</h1>
-      <div>
-        {data.results ? (
-          data.results.map((movie) => (
-            <div key={movie.id}>
-              <img
-                src={`${imageUrl + movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={400}
-              />
-              <h1>{movie.title}</h1>
-              <p>Género: {generos[movie.genre_ids[0]]}</p>
-              <p>Calificación: {movie.vote_average}</p>
-            </div>
-          ))
-        ) : (
-          <p>No se encuentran las películas</p>
-        )}
+      <div className="flex gap-5 ml-2 pt-4 w-100 h-100">
+        <div className="flex flex-wrap ">
+          {data.results &&
+            data.results.map((movie) => (
+              <div key={movie.id} className="px-2 w-1/4 pb-4">
+                <img
+                  src={`${imageUrl + movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={400}
+                />
+                <h1>{movie.title}</h1>
+                <p>Género: {generos[movie.genre_ids[0]]}</p>
+                <p>Calificación: {movie.vote_average}⭐</p>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
