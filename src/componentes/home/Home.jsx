@@ -68,11 +68,11 @@ const Home = () => {
           handleFiltroGeneros={handleFiltroGeneros}
           filteredMovies={filteredMovies}
           setFilteredMovies={setFilteredMovies}
-          handleGeneroChange={handleGeneroChange}
+          /*  handleGeneroChange={handleGeneroChange} */
         />
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {data.results && !filtroGeneros ? (
           orderMovies.map((movie) => (
             <div key={movie.id} className="px-2 w-1/4 pb-4">
