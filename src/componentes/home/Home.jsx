@@ -12,6 +12,8 @@ const Home = () => {
   const [orderAbc, setOrderAbc] = useState(null);
   /*   const [select, setSelect] = useState(null); */
   const [filtroGeneros, setFiltroGeneros] = useState(false);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
   const context = useContext(MostarPeliculasContext);
 
   const { data } = useFetch(
@@ -25,6 +27,7 @@ const Home = () => {
     dataMovies = data.results.slice();
   }
   console.log(generos, 24);
+
   const handleOrderChange = (e) => {
     const selectedOrder = e.target.value;
 

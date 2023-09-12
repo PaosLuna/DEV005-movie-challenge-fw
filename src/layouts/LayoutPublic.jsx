@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../componentes/header/Navbar.jsx";
-import Slider from "../componentes/slider/Slider.jsx";
+/* import Slider from "../componentes/slider/Slider.jsx"; */
 /* import Carrusel from "../componentes/carrusel/Carrusel.jsx"; */
 
 const LayoutPublic = () => {
