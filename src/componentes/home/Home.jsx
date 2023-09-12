@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { orderAZ } from "../../servicios/orderAZ";
 import { useFetch } from "../../servicios/useFetch";
 import { useGenres } from "../../servicios/useGeneros";
@@ -11,7 +11,6 @@ const Home = () => {
   const [orderAbc, setOrderAbc] = useState(null);
   /*   const [select, setSelect] = useState(null); */
   const [filtroGeneros, setFiltroGeneros] = useState(false);
-  const [filteredMovies, setFilteredMovies] = useState([]);
 
   const context = useContext(MostarPeliculasContext);
 
@@ -25,17 +24,14 @@ const Home = () => {
   if (data.results) {
     dataMovies = data.results.slice();
   }
-  console.log(generos, 24);
 
   const handleOrderChange = (e) => {
     const selectedOrder = e.target.value;
 
     if (selectedOrder === "ASCENDENTE") {
       setOrderAbc(orderAZ(dataMovies, (title) => title.title, "asc"));
-      console.log("az");
     } else if (selectedOrder === "DESCENDENTE") {
       setOrderAbc(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("za");
     } else {
       setOrderAbc(null);
     }
@@ -49,8 +45,34 @@ const Home = () => {
     setFiltroGeneros(true);
   };
 
+  //lógica buscador
+  const [buscadorMovies, setBuscadorMovies] = useState([]);
+  const [searchByTitle, setSearchByTitle] = useState(null);
+
+  const filteredMoviesByTitle = (movies, searchByTitle) => {
+    return movies?.filter((movie) =>
+      movie.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
+  };
+
+  useEffect(() => {
+    if (searchByTitle) {
+      setBuscadorMovies(filteredMoviesByTitle(dataMovies, searchByTitle));
+    } else {
+      setBuscadorMovies([]);
+    }
+  }, [searchByTitle]);
+
   return (
     <div>
+      <div className="mt-0 flex justify-center">
+        <input
+          type="text"
+          placeholder="Ingresa el nombre de la película"
+          className="rounded-lg border border-black ml-2 w-11/12 h-8 p-4 mb-6 focus:outline-none text-center "
+          onChange={(event) => setSearchByTitle(event.target.value)}
+        />
+      </div>
       <div className="flex gap-5 ml-2 pb-4 w-100 h-14">
         <select
           onChange={handleOrderChange}
@@ -62,16 +84,29 @@ const Home = () => {
           <option value={"ASCENDENTE"}>ASCENDENTE</option>
           <option value={"DESCENDENTE"}>DESCENDENTE</option>
         </select>
-        <SelectGenero
-          handleFiltroGeneros={handleFiltroGeneros}
-          filteredMovies={filteredMovies}
-          setFilteredMovies={setFilteredMovies}
-          /*  handleGeneroChange={handleGeneroChange} */
-        />
+        <SelectGenero handleFiltroGeneros={handleFiltroGeneros} />
       </div>
 
       <div className="flex flex-wrap ">
-        {data.results && !filtroGeneros ? (
+        {buscadorMovies.length > 0 ? (
+          buscadorMovies.map((movie) => (
+            <div key={movie.id} className="px-2 w-1/4 pb-4">
+              <div className="mb-4">
+                <img
+                  src={`${imageUrl + movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={400}
+                />
+              </div>
+              <h1>{movie.title}</h1>
+              <p>Género: {generos[movie.genre_ids[0]]}</p>
+              <p>Calificación: {movie.vote_average}⭐</p>
+            </div>
+          ))
+        ) : filtroGeneros ? (
+          <div></div>
+        ) : (
           orderMovies.map((movie) => (
             <div key={movie.id} className="px-2 w-1/4 pb-4">
               <div className="mb-4">
@@ -87,8 +122,6 @@ const Home = () => {
               <p>Calificación: {movie.vote_average}⭐</p>
             </div>
           ))
-        ) : (
-          <div></div>
         )}
       </div>
     </div>
@@ -96,50 +129,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <button onClick={() => setFiltroGeneros(!filtroGeneros)}>
-        probando genero
-      </button> */
-}
-
-{
-  /* <select>
-        <option disabled selected>
-          GENERO
-        </option>
-        <option>AVENTURA</option>
-        <option>FANTASIA</option>
-        <option>ANIMACIÓN</option>
-        <option>DRAMA</option>
-        <option>HORROR</option>
-        <option>ACTION</option>
-        <option>COMEDY</option>
-        <option>HISTORIA</option>
-        <option>WESTERN</option>
-        <option>SUSPENSO</option>
-        <option>CRIMEN</option>
-        <option>DOCUMENTAL</option>
-        <option>CIENCIA FICCIÓN</option>
-        <option>MISTERIO</option>
-        <option>MÚSICA</option>
-        <option>ROMANCE</option>
-        <option>FAMILIA</option>
-        <option>BÉLICA</option>
-        <option>PELÍCULA DE TV</option>
-      </select>
-      <select>
-        <option disabled selected>
-          PUNTAJE
-        </option>
-        <option> 0 - 1 ⭐</option>
-        <option> 1 - 2 ⭐</option>
-        <option> 2 - 3 ⭐</option>
-        <option> 3 - 4 ⭐</option>
-        <option> 4 - 5 ⭐</option>
-        <option> 5 - 6 ⭐</option>
-        <option> 6 - 7 ⭐</option>
-        <option> 7 - 8 ⭐</option>
-        <option> 8 - 9 ⭐</option>
-      </select> */
-}

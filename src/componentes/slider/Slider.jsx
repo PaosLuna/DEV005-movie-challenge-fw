@@ -16,8 +16,6 @@ const Banner = () => {
     principales = data.results.slice(0, 3);
   }
 
-  console.log(principales, 19);
-
   useEffect(() => {
     const listNode = listRef.current;
     const imgNode = listNode.querySelectorAll("li > img")[currentIdex];

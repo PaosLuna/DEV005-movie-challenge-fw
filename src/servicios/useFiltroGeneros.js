@@ -20,7 +20,7 @@ const useFiltroGeneros = (genreId) => {
       );
       const data = await res.json();
       setGenres(data);
-      console.log(data, 23);
+      //console.log(data, 23);
     } catch (error) {
       error;
       setGenres([]);

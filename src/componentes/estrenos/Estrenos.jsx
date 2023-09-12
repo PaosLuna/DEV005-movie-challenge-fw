@@ -27,14 +27,12 @@ const Estrenos = () => {
 
     if (selectedOrder === "ASCENDENTE") {
       setOrderAbc(orderAZ(dataMovies, (title) => title.title, "asc"));
-      console.log("az");
     } else if (selectedOrder === "DESCENDENTE") {
       setOrderAbc(orderAZ(dataMovies, (title) => title.title, "desc"));
-      console.log("za");
     } else {
       setOrderAbc(null);
     }
-    console.log("hola");
+
     setSelect(selectedOrder);
   };
 

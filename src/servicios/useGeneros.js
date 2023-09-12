@@ -38,6 +38,6 @@ export const useGenres = () => {
     generosIdNombre[genero.id] = genero.name;
   }
 
-  console.log(generosIdNombre, "prubea");
+  //console.log(generosIdNombre, "prubea");
   return generosIdNombre;
 };
