@@ -7,8 +7,7 @@ const LayoutPublic = () => {
   return (
     <div>
       <Navbar />
-      <Slider />
-      {/*   <Carrusel /> */}
+
       <Outlet />
 
       <footer>Probando Layout</footer>
