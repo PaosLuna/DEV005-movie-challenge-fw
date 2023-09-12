@@ -64,15 +64,10 @@ const Home = () => {
           <option value={"ASCENDENTE"}>ASCENDENTE</option>
           <option value={"DESCENDENTE"}>DESCENDENTE</option>
         </select>
-        <SelectGenero
-          handleFiltroGeneros={handleFiltroGeneros}
-          filteredMovies={filteredMovies}
-          setFilteredMovies={setFilteredMovies}
-          /*  handleGeneroChange={handleGeneroChange} */
-        />
+        <SelectGenero handleFiltroGeneros={handleFiltroGeneros} />
       </div>
 
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap">
         {data.results && !filtroGeneros ? (
           orderMovies.map((movie) => (
             <div key={movie.id} className="px-2 w-1/4 pb-4">
