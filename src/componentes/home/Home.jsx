@@ -4,7 +4,6 @@ import { useFetch } from "../../servicios/useFetch";
 import { useGenres } from "../../servicios/useGeneros";
 import SelectGenero from "../selects/SelectGenero";
 import { MostarPeliculasContext } from "../context/Context";
-import Banner from "../slider/Slider";
 
 const Home = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -52,7 +51,6 @@ const Home = () => {
 
   return (
     <div>
-      <Banner />
       <div className="flex gap-5 ml-2 pb-4 w-100 h-14">
         <select
           onChange={handleOrderChange}

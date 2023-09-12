@@ -1,16 +1,17 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../componentes/header/Navbar.jsx";
-/* import Slider from "../componentes/slider/Slider.jsx"; */
-/* import Carrusel from "../componentes/carrusel/Carrusel.jsx"; */
 
+import Banner from "../componentes/slider/Slider.jsx";
 const LayoutPublic = () => {
   return (
     <div>
       <Navbar />
-
+      <Banner />
       <Outlet />
 
-      <footer>Probando Layout</footer>
+      <footer className="bg-black text-white text-center text-sm mt-2 p-2">
+        Creado por Paola Luna
+      </footer>
     </div>
   );
 };
