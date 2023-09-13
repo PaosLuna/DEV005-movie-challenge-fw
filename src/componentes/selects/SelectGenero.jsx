@@ -2,6 +2,116 @@ import { useState } from "react";
 import { useGenres } from "../../servicios/useGeneros";
 import useFiltroGeneros from "../../servicios/useFiltroGeneros";
 
+import React, { useContext } from "react";
+import { MostarPeliculasContext } from "../context/Context";
+
+const SelectGenero = ({ handleFiltroGeneros }) => {
+  const imageUrl = "https:image.tmdb.org/t/p/original";
+  const generos = useGenres();
+  const [selectGenero, setSelectGenero] = useState("");
+  const [movieFiltro, setMovieFiltro] = useState("");
+
+  const { data: Accion } = useFiltroGeneros("28");
+  const { data: Aventura } = useFiltroGeneros("12");
+  const { data: Animacion } = useFiltroGeneros("16");
+  const { data: Comedia } = useFiltroGeneros("35");
+  const { data: Crimen } = useFiltroGeneros("80");
+  const { data: Documental } = useFiltroGeneros("99");
+  const { data: Drama } = useFiltroGeneros("18");
+  const { data: Familiar } = useFiltroGeneros("10751");
+  const { data: Fantasia } = useFiltroGeneros("14");
+  const { data: Historia } = useFiltroGeneros("36");
+  const { data: Horror } = useFiltroGeneros("27");
+  const { data: Musica } = useFiltroGeneros("10402");
+  const { data: Misterio } = useFiltroGeneros("9648");
+  const { data: Romance } = useFiltroGeneros("10749");
+  const { data: CienciaFiccion } = useFiltroGeneros("878");
+  const { data: Suspenso } = useFiltroGeneros("53");
+  const { data: Tv } = useFiltroGeneros("10770");
+  const { data: Western } = useFiltroGeneros("37");
+  const { data: Belico } = useFiltroGeneros("10752");
+
+  //lógca para usar context
+  const { setSelect } = useContext(MostarPeliculasContext);
+
+  const handleGeneroChange = (e) => {
+    const selectedGenero = e.target.value;
+
+    if (selectedGenero == "Aventura") {
+      setSelect(Aventura);
+    } else if (selectedGenero === "Fantasía") {
+      setSelect(Fantasia);
+    } else if (selectedGenero === "Animación") {
+      setSelect(Animacion);
+    } else if (selectedGenero === "Drama") {
+      setSelect(Drama);
+    } else if (selectedGenero === "Terror") {
+      setSelect(Horror);
+    } else if (selectedGenero === "Acción") {
+      setSelect(Accion);
+    } else if (selectedGenero === "Comedia") {
+      setSelect(Comedia);
+    } else if (selectedGenero === "Historia") {
+      setSelect(Historia);
+    } else if (selectedGenero === "Western") {
+      setSelect(Western);
+    } else if (selectedGenero === "Suspense") {
+      setSelect(Suspenso);
+    } else if (selectedGenero === "Crimen") {
+      setSelect(Crimen);
+    } else if (selectedGenero === "Documental") {
+      setSelect(Documental);
+    } else if (selectedGenero === "Ciencia ficción") {
+      setSelect(CienciaFiccion);
+    } else if (selectedGenero === "Misterio") {
+      setSelect(Misterio);
+    } else if (selectedGenero === "Música") {
+      setSelect(Musica);
+    } else if (selectedGenero === "Romance") {
+      setSelect(Romance);
+    } else if (selectedGenero === "Familia") {
+      setSelect(Familiar);
+    } else if (selectedGenero === "Bélica") {
+      setSelect(Belico);
+    } else if (selectedGenero === "Película de TV") {
+      setSelect(Tv);
+    } else {
+      console.log("genero");
+    }
+
+    handleFiltroGeneros();
+    setSelectGenero(selectedGenero, "selectGenero");
+  };
+
+  console.log(movieFiltro, 80);
+
+  return (
+    <div>
+      <select
+        name="filtroGeneros"
+        onChange={handleGeneroChange}
+        value={selectGenero}
+        className="bg-purple-500 text-white text-xl text-center rounded-md w-40 h-10 cursor-pointer"
+      >
+        <option disabled selected>
+          GENERO
+        </option>
+        {Object.keys(generos).map((genero) => (
+          <option key={genero.id} value={genero.id}>
+            {generos[genero]}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+export default SelectGenero;
+
+/* import { useState } from "react";
+import { useGenres } from "../../servicios/useGeneros";
+import useFiltroGeneros from "../../servicios/useFiltroGeneros";
+
 const SelectGenero = ({ handleFiltroGeneros }) => {
   const imageUrl = "https:image.tmdb.org/t/p/original";
   const generos = useGenres();
@@ -119,3 +229,4 @@ const SelectGenero = ({ handleFiltroGeneros }) => {
 };
 
 export default SelectGenero;
+ */

@@ -4,7 +4,7 @@ import Logo from "../../assets/LogoMovie.png";
 const Navbar = () => {
   return (
     <div>
-      <div className="bg-purple-800 text-white flex justify-between p-2 text-xl font-bold">
+      <div className="bg-purple-800 text-white flex justify-between p-2 text-xl font-bold px-12">
         <img
           src={Logo}
           alt="Cinema Zone"
